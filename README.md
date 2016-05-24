@@ -20,7 +20,7 @@ Use `pip` to install, compatible with Python 2.7+ and 3.4+
 pip install pipeit
 ```
 
-### example
+## example
 
 ```python
 from pipeit import Pipeline
@@ -50,7 +50,7 @@ pipeline.init().add().subtract().display()
 >> 0
 ```
 
-### usage
+## usage
 
 Create a new `pipeline` using the constructor.
 
@@ -59,7 +59,7 @@ from pipeit import Pipeline
 pipeline = Pipeline()
 ```
 
-Then define functions for your pipeline using decorators provided by the `pipeline` object, putting `@pipeline.pipe` above your function definition. You can also use the decorator methods directly as in `pipeline.pipe(func)`.
+Then define functions for your pipeline using decorators provided by the `pipeline` object. You can either put `@pipeline.pipe` above your function definition, or use the methods directly as in `pipeline.pipe(func)`.
 
 #### `source`
 
