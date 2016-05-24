@@ -3,14 +3,14 @@
 > tiny package for making pipelines in python
 
 This package makes it easy to build simple pipelines in Python. It assumes functions come in one of three flavors
+- a `source` takes options and return data
+- a `pipe` takes data and options and returns data
+- a `sink` takes data and options and has side effects
 
+and you just string them together
 ```
 source ----> pipe ----> pipe -----> sink
 ```
-
-a `source` take options and return data
-a `pipe` take data and options and returns data
-a `sink` takes data and options and has side effects
 
 ## install
 
