@@ -67,10 +67,10 @@ Define a source like this
 
 ```python
 @pipeline.source
-def myfunc(option=None):
-  return data
+def init():
+  return 0
 ```
-A `source` can take any arguments, and must return something that will be the input to subsequent commands.
+A `source` can take any arguments, and must return `data` that will be the input to subsequent commands.
 
 #### `pipe`
 
@@ -78,10 +78,10 @@ Define a pipe like this
 
 ```python
 @pipeline.pipe
-def myfunc(input, option=None):
-  return input
+def add(data):
+  return data + 1
 ```
-The first argument of a `pipe` must be `input`, the other arguments can be anything, and a `pipe` must return something.
+The first argument of a `pipe` must be `data`, the other arguments can be anything, and a `pipe` must return something.
 
 #### `sink`
 
@@ -89,7 +89,13 @@ Define a sink like this
 
 ```python
 @pipeline.sink
-def myfunc(input, argument=None):
-  print input
+def display(data):
+  print data
 ```
 The first argument of a `sink` must be `input`, the other arguments can be anything, and a `sink` can have side effects (like printing, or saving, or plotting) but shouldn't return anything.
+
+Once constructed, you can use your `pipeline` by chaining methods
+
+```python
+pipeline.init().add().display()
+```
