@@ -1,7 +1,7 @@
 class Pipeline(object):
 
-    def __init__(self, context=None):
-        self.context = context
+    def __init__(self):
+        self._data = None
 
     def __setitem__(self, key, value):
         self.__dict__[key] = value
@@ -29,9 +29,15 @@ class Pipeline(object):
     def sink(self, func):
         check_input(func)
         def wrapper(**kwargs):
-           func(data=self._data, **kwargs)
+            output = func(data=self._data, **kwargs)
+            if output is not None:
+                return output
         self[func.__name__] = wrapper
 
+    @property
+    def data(self):
+        return self._data
+    
 
 def check_input(func):
     if func.func_code.co_argcount == 0:
