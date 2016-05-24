@@ -31,16 +31,16 @@ def init():
   return 0
 
 @pipeline.pipe
-def add(input):
-  return input + 1
+def add(data):
+  return data + 1
 
 @pipeline.pipe
-def subtract(input):
-  return input - 1
+def subtract(data):
+  return data - 1
 
 @pipeline.sink
-def display(input):
-  print input
+def display(data):
+  print data
 
 pipeline.init().display()
 >> 0

@@ -20,7 +20,7 @@ class Pipeline(object):
     def pipe(self, func):
         check_input(func)
         def wrapper(**kwargs):
-            self._data = func(input=self._data, **kwargs)
+            self._data = func(data=self._data, **kwargs)
             if self._data is None:
                 raise ValueError("a pipe function must return something")
             return self
@@ -29,14 +29,14 @@ class Pipeline(object):
     def sink(self, func):
         check_input(func)
         def wrapper(**kwargs):
-           func(input=self._data, **kwargs)
+           func(data=self._data, **kwargs)
         self[func.__name__] = wrapper
 
 
 def check_input(func):
     if func.func_code.co_argcount == 0:
-        raise ValueError("a pipe function must have an 'input' argument")
-    if not 'input' in func.func_code.co_varnames:
-        raise ValueError("a pipe function must have an 'input' argument")
+        raise ValueError("a pipe function must have an 'data' argument")
+    if not 'data' in func.func_code.co_varnames:
+        raise ValueError("a pipe function must have an 'data' argument")
 
     
