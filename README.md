@@ -24,11 +24,10 @@ pip install pipeit
 
 ```python
 from pipeit import Pipeline
-
 pipeline = Pipeline()
 
 @pipeline.source
-def init(path='', engine=None):
+def init():
   return 0
 
 @pipeline.pipe
