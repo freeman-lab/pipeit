@@ -4,11 +4,9 @@
 
 This package makes it easy to build simple pipelines in Python. It assumes functions come in one of three flavors
 
-| function | role |
-|----------|-------------:|
-| `source` | takes options and returns data |
-| `pipe`   | takes data and options and returns data |
-| `sink`   | takes data and options and has side effects |
+`source` - takes options and returns data  
+`pipe`   - takes data and options and returns data  
+`sink` - takes data and options and has side effects
 
 and you just string them together
 ```
