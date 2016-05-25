@@ -40,9 +40,9 @@ class Pipeline(object):
     
 
 def check_input(func):
-    if func.func_code.co_argcount == 0:
+    if func.__code__.co_argcount == 0:
         raise ValueError("a pipe function must have an 'data' argument")
-    if not 'data' in func.func_code.co_varnames:
+    if not 'data' in func.__code__.co_varnames:
         raise ValueError("a pipe function must have an 'data' argument")
 
     
